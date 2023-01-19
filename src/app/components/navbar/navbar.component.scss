@@ -1,0 +1,15 @@
+.example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox. 
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+.navbar-item2 {
+  display: flex;
+  .item {
+    cursor: pointer;
+    margin-right: 2rem;
+  }
+  .item:last-child {
+    margin-right: 0;
+  }
+}

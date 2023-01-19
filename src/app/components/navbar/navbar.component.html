@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+  <div class="navbar-item1" (click)="logAuth()">My Application Log Auth</div>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+
+  <div class="navbar-item2">
+    <ng-container *ngIf="isAuthenticated">
+      <div class="dashboard item">Dashboard</div>
+      <div class="cart item">Cart</div>
+      <div class="logout item" (click)="handleLogout()">Logout</div>
+    </ng-container>
+    <ng-container *ngIf="!isAuthenticated">
+      <a class="register item" routerLink="/register">Register</a>
+      <a class="login item" routerLink="/login">Login</a>
+    </ng-container>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,79 @@
+<section id="register">
+  <div class="inner">
+    <form
+      id="register-form"
+      [formGroup]="registerForm"
+      (ngSubmit)="handleRegister()"
+    >
+      <h1>Register</h1>
+      <mat-form-field appearance="fill" class="email-field">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" formControlName="email" />
+        <span
+          class="email-error-message mat-form-field-subscript-wrapper"
+          *ngIf="email.invalid && email.touched"
+        >
+          <mat-error *ngIf="email.errors.required"
+            >Please enter your email</mat-error
+          >
+          <mat-error *ngIf="email.errors.pattern"
+            >Your email is invalid</mat-error
+          >
+        </span>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="password-field">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="showPassword ? 'text' : 'password'" formControlName="password" />
+        <span
+          class="password-error-message mat-form-field-subscript-wrapper"
+          *ngIf="password.invalid && password.touched"
+        >
+          <mat-error *ngIf="password.errors.required"
+            >Please enter your password</mat-error
+          >
+          <mat-error *ngIf="password.errors.minlength"
+            >Your password must at least more than 8 characters</mat-error
+          >
+          <mat-error *ngIf="password.errors.maxlength"
+            >Your password must not be more than 16 characters</mat-error
+          >
+          <mat-error *ngIf="password.errors.pattern"
+            >Your password must be english characters or numbers</mat-error
+          >
+        </span>
+        <fa-icon [icon]="showPassword ? passwordEyeSlash : passwordEye" class="eye-icon" (click)="handleShowPassword()"></fa-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="confirm-password-field">
+        <mat-label>Confirm Password</mat-label>
+        <input
+          matInput
+          type="confirmPassword"
+          formControlName="confirmPassword"
+          [type]="showConfirmPassword ? 'text' : 'password'"
+        />
+
+        <span
+          class="confirmPassword-error-message mat-form-field-subscript-wrapper"
+          *ngIf="confirmPassword.invalid && confirmPassword.touched"
+        >
+          <mat-error *ngIf="confirmPassword.errors.required"
+            >Please enter your confirm Password</mat-error
+          >
+
+          <mat-error *ngIf="confirmPassword.errors.MustMatch"
+            >Your confirm Password must match with your password</mat-error
+          >
+        </span>
+        <fa-icon [icon]="showConfirmPassword ? confirmPasswordEyeSlash : confirmPasswordEye" class="eye-icon" (click)="handleShowConfirmPassword()"></fa-icon>
+      </mat-form-field>
+      <button mat-raised-button color="primary">
+        <ng-container *ngIf="!isLoading"> Register </ng-container>
+        <ng-container *ngIf="isLoading"> Loading... </ng-container>
+      </button>
+
+      
+    </form>
+  </div>
+</section>
