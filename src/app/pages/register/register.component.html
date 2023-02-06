@@ -24,7 +24,11 @@
 
       <mat-form-field appearance="fill" class="password-field">
         <mat-label>Password</mat-label>
-        <input matInput [type]="showPassword ? 'text' : 'password'" formControlName="password" />
+        <input
+          matInput
+          [type]="showPassword ? 'text' : 'password'"
+          formControlName="password"
+        />
         <span
           class="password-error-message mat-form-field-subscript-wrapper"
           *ngIf="password.invalid && password.touched"
@@ -42,7 +46,11 @@
             >Your password must be english characters or numbers</mat-error
           >
         </span>
-        <fa-icon [icon]="showPassword ? passwordEyeSlash : passwordEye" class="eye-icon" (click)="handleShowPassword()"></fa-icon>
+        <fa-icon
+          [icon]="showPassword ? passwordEyeSlash : passwordEye"
+          class="eye-icon"
+          (click)="handleShowPassword()"
+        ></fa-icon>
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="confirm-password-field">
@@ -66,14 +74,18 @@
             >Your confirm Password must match with your password</mat-error
           >
         </span>
-        <fa-icon [icon]="showConfirmPassword ? confirmPasswordEyeSlash : confirmPasswordEye" class="eye-icon" (click)="handleShowConfirmPassword()"></fa-icon>
+        <fa-icon
+          [icon]="
+            showConfirmPassword ? confirmPasswordEyeSlash : confirmPasswordEye
+          "
+          class="eye-icon"
+          (click)="handleShowConfirmPassword()"
+        ></fa-icon>
       </mat-form-field>
       <button mat-raised-button color="primary">
         <ng-container *ngIf="!isLoading"> Register </ng-container>
         <ng-container *ngIf="isLoading"> Loading... </ng-container>
       </button>
-
-      
     </form>
   </div>
 </section>

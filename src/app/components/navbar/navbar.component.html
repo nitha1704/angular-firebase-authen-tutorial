@@ -6,8 +6,8 @@
 
   <div class="navbar-item2">
     <ng-container *ngIf="isAuthenticated">
-      <div class="dashboard item">Dashboard</div>
-      <div class="cart item">Cart</div>
+      <a class="dashboard item" routerLink="/dashboard">Dashboard</a>
+      <a class="cart item" routerLink="/cart">Cart</a>
       <div class="logout item" (click)="handleLogout()">Logout</div>
     </ng-container>
     <ng-container *ngIf="!isAuthenticated">

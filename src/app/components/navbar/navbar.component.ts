@@ -27,5 +27,9 @@ export class NavbarComponent implements OnInit {
 
   logAuth(){
     this.authService.logAuth();
+    console.log(
+      'this.authService.isAuthenticated',
+      this.authService.isAuthenticated.value
+    );
   };
 }

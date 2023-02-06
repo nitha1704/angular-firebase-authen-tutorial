@@ -9,8 +9,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
-
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-register',

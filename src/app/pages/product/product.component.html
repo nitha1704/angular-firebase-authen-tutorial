@@ -1,0 +1,98 @@
+<section id="product">
+  <ng-container *ngIf="this.productInfo">
+    <a
+      mat-raised-button
+      color="primary"
+      [routerLink]="['/products']"
+      class="back-btn"
+      >Back to products</a
+    >
+    <div class="product-container">
+      <div class="product-images">
+        <div class="main-image">
+          <img [src]="mainImg" />
+        </div>
+        <div class="sub-image">
+          <ng-container *ngFor="let subImage of productInfo.images">
+            <img [src]="subImage.url" (click)="mainImg = subImage.url" />
+          </ng-container>
+        </div>
+      </div>
+      <div class="product-informations">
+        <div class="title info">
+          <h2>{{ productInfo.name }}</h2>
+        </div>
+        <div class="star info">
+          <div [innerHTML]="renderStars2()" class="stars-icon"></div>
+           
+        </div>
+        <div class="price info">
+          {{ productInfo.price | currency }}
+        </div>
+        <div class="description info">
+          {{ productInfo.description }}
+        </div>
+        <div class="available info">
+          <h3 class="available-title">Available:</h3>
+          <div class="stock">
+            {{ productInfo.stock > 0 ? "In stock" : "No product in stock" }}
+          </div>
+        </div>
+        <div class="sku info">
+          <h3 class="sku-title">SKU:</h3>
+          <div class="sku-id">
+            {{ productInfo.id }}
+          </div>
+        </div>
+        <div class="brand info">
+          <h3 class="brand-title">Brand:</h3>
+          <div class="company">
+            {{ productInfo.company }}
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="color info">
+          <h3 class="color-title">Color:</h3>
+          <div class="color-code-container">
+            <ng-container *ngFor="let colorCode of productInfo.colors">
+              <div
+                class="color-code"
+                [ngClass]="{ active: selectedColor === colorCode }"
+                [style.backgroundColor]="colorCode"
+                (click)="selectedColor = colorCode"
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 512 512"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
+                  ></path>
+                </svg>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="quantity info">
+          <h3 class="quantity-title">Quantity:</h3>
+          <div class="quantity-number">
+            <button (click)="handleQuantity('dec')">-</button>
+            <span>{{ quantity }}</span>
+            <button (click)="handleQuantity('inc')">+</button>
+          </div>
+        </div>
+        <div class="add">
+          <button>Add to cart</button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</section>
